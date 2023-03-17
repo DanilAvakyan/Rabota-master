@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>ПРАКТИЧЕСКАЯ РАБОТА</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body style="background: #5CDB95">
+<h2>Редактирование данных типа страхования</h2>
+<div th:each="el : ${typeInsurance}" th:object = "${typeInsurance}">
+    <form  method="post">
+        <input type="text" name="nameTypeInsurance" th:field="*{nameTypeInsurance}" placeholder="Тип страхования"><br>
+        <div style="color: white" th:if="${#fields.hasErrors('nameTypeInsurance')}" th:errors="*{nameTypeInsurance}"></div>
+
+
+        <input type="text" name="descriptionTypeInsurance" th:field="*{descriptionTypeInsurance}" placeholder="Описание"><br>
+        <div style="color: white" th:if="${#fields.hasErrors('descriptionTypeInsurance')}" th:errors="*{descriptionTypeInsurance}"></div>
+
+        <br>
+        <form>
+            <button type="submit" style="background: #379683">Изменить данные типа страхования</button>
+        </form>
+    </form>
+</div>
+</body>
+</html>

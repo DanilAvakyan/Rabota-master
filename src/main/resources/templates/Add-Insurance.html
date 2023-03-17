@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>ПРАКТИЧЕСКАЯ РАБОТА</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+  <div th:insert="Blocks/Header"></div>
+</head>
+<body style="background: #5CDB95">
+<form th:object = "${insurance}" th:action="${'/Add/Insurance'}" method="post">
+
+  <input type="date" name="startDate" th:field="*{startDate}" placeholder="Дата начала страхования"><br>
+  <div style="color: white" th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}"></div>
+
+  <input type="date" name="endDate" th:field="*{endDate}" placeholder="Дата окончания страхования"><br>
+  <div style="color: white" th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></div>
+
+  <input type="text" name="summ" th:field="*{summ}" placeholder="Сумма страхования"><br>
+  <div style="color: white" th:if="${#fields.hasErrors('summ')}" th:errors="*{summ}"></div>
+
+  <select  name="nameTypeInsurance">
+    <div th:each="element : ${typeInsurance}">
+      <option th:text="${element.nameTypeInsurance}"></option>
+    </div>
+  </select>
+
+  <select  name="INN">
+    <div th:each="element : ${buyer}">
+      <option th:text="${element.INN}"></option>
+    </div>
+  </select>
+
+
+<!--  <select  name="VIN">-->
+<!--    <div th:each="element : ${cars}">-->
+<!--      <option th:text="${element.VIN}"></option>-->
+<!--    </div>-->
+<!--  </select>-->
+
+  <br>
+  <form>
+    <button type="submit" style="background: #379683">Добавить страхование</button>
+  </form>
+</form>
+</body>
+</html>

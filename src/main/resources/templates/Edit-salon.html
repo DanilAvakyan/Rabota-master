@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ПРАКТИЧЕСКАЯ РАБОТА</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body style="background: #5CDB95">
+<h2>Редактирование данных автосалона</h2>
+<div th:each="el : ${Salon}" th:object = "${Salon}">
+    <form  method="post">
+        <input th:field="*{nameSalon}" type="text" name="nameSalon" placeholder="Наименование автосалона"><br>
+        <div style="color: white" th:if="${#fields.hasErrors('nameSalon')}" th:errors="*{nameSalon}"></div>
+        <input th:field="*{adresSalon}" type="text" name="adresSalon" placeholder="Юридический адрес"><br>
+        <div style="color: white" th:if="${#fields.hasErrors('adresSalon')}" th:errors="*{adresSalon}"></div>
+        <input type="text" th:field="*{innSalon}" name="innSalon" placeholder="ИНН"><br>
+        <div style="color: white" th:if="${#fields.hasErrors('innSalon')}" th:errors="*{innSalon}"></div>
+        <input type="text" th:field="*{nomBank}" name="nomBank" placeholder="Номер банковского счета"><br>
+        <div style="color: white" th:if="${#fields.hasErrors('nomBank')}" th:errors="*{nomBank}"></div>
+        <form>
+            <button type="submit" style="background: #379683"> Изменить данные автосалона</button>
+        </form>
+    </form>
+</div>
+</body>
+</html>

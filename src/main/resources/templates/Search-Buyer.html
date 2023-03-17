@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ПРАКТИЧЕСКАЯ РАБОТА</title>
+</head>
+<body style="background: #5CDB95">
+<h2>Поиск сотрудника</h2>
+<form method="post" th:action="${'/Search/Buyer-result'}">
+  <input type="text" name="surnameB"><br>
+  <button type="submit" style="background: #379683">Точное сопадение</button>
+</form>
+<form method="post" th:action="${'/Search/Buyer'}">
+  <input type="text" name="surnameB"><br>
+  <button type="submit" style="background: #379683">Не точное сопадение</button>
+</form>
+<div th:each="el : ${result}">
+  <h3 style="color: white"><b> Фамилия - </b> <span th:text="${el.getSurnameB()}" /></h3>
+  <p style="color: white"><b>Имя - </b> <span th:text="${el.getNameB()}"/></p>
+  <p style="color: white"><b> Отчество - </b> <span th:text="${el.getMiddlenameB()}"/></p>
+  <p style="color: white"><b> Год рождения - </b> <span th:text="${el.getBthdayB()}"/></p>
+  <p style="color: white"><b> Адрес регистрации - </b> <span th:text="${el.getAdresRegB()}"/></p>
+  <p style="color: white"><b> Email - </b> <span th:text="${el.getEmailB()}"/></p>
+  <p style="color: white"><b> ИНН - </b> <span th:text="${el.getINN()}"/></p>
+  <p style="color: white"><b> Серия паспорта - </b> <span th:text="${el.getSeriaPass()}"/></p>
+  <p style="color: white"><b> Номер паспорта - </b> <span th:text="${el.getNomPass()}"/></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>ПРАКТИЧЕСКАЯ РАБОТА</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body style="background: #5CDB95">
+<form th:object = "${buyer}" th:action="${'/Add/Buyer'}" method="post">
+
+    <br>
+    <input th:field="*{surnameB}" type="text" name="surnameB" placeholder="Фамилия"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('surnameB')}" th:errors="*{surnameB}"></div>
+    <input th:field="*{nameB}" type="text" name="name" placeholder="Имя"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('nameB')}" th:errors="*{nameB}"></div>
+    <input type="text" th:field="*{middlenameB}" name="middlenameB" placeholder="Отчество"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('middlenameB')}" th:errors="*{middlenameB}"></div>
+    <input type="text" th:field="*{bthdayB}" name="bthdayB" placeholder="Дата рождения"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('bthdayB')}" th:errors="*{bthdayB}"></div>
+    <input type="text" th:field="*{AdresRegB}" name="AdresRegB" placeholder="Адрес регистрации"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('AdresRegB')}" th:errors="*{AdresRegB}"></div>
+    <input type="text" th:field="*{EmailB}" name="EmailB" placeholder="Email"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('EmailB')}" th:errors="*{EmailB}"></div>
+
+    <input type="text" th:field="*{INN}" name="INN" placeholder="INN"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('INN')}" th:errors="*{INN}"></div>
+
+    <input type="text" th:field="*{SeriaPass}" name="SeriaPass" placeholder="SeriaPass"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('SeriaPass')}" th:errors="*{SeriaPass}"></div>
+
+    <input type="text" th:field="*{NomPass}" name="NomPass" placeholder="NomPass"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('NomPass')}" th:errors="*{NomPass}"></div>
+    <form>
+        <button type="submit" style="background: #379683"> Добавить покупателя</button>
+    </form>
+</form>
+</body>
+</html>

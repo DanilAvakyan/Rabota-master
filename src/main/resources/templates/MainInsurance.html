@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ПРАКТИЧЕСКАЯ РАБОТА</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body style="background: #5CDB95">
+<div th:insert="Blocks/Header"></div>
+<h1>Страхование</h1>
+
+<form  th:action="'/Add/Insurance'">
+  <button class="btn btn-warning" STYLE="background: #379683" type="submit">Добавить страхование</button>
+</form>
+
+<div th:each="el : ${insurances}">
+
+  <p style="color: white"/><b>Дата начала страхования - </b> <span th:text="${el.getStartDate()}"/></p>
+  <p style="color: white"/><b>Дата окончания страхования - </b> <span th:text="${el.getEndDate()}"/></p>
+  <p style="color: white"/><b>Сумма страхования - </b> <span th:text="${el.getSumm()}"/></p>
+  <p style="color: white"/><b>Тип - </b> <span th:text="${el.getTypeInsurance.getNameTypeInsurance()}"/></p>
+<!--  <p style="color: white"/><b>ИНН покупателя - </b> <span th:text="${el.getBuyer.getINN()}"/></p>-->
+
+
+  <form  th:action="'/Insurance/' + ${el.id} + '/Edit'">
+    <button class="btn btn-warning" style="background: #379683" type="submit">Изменить</button>
+  </form>
+
+  <form th:action="'/Insurance/' + ${el.id} + '/Remove'" method="post">
+    <button class="btn btn-warning" style="background: #379683" type="submit">Удалить</button>
+  </form>
+</div>
+</body>
+<br>
+<form  th:action="'/TypeInsurance/'">
+  <button STYLE="background: #379683" class="btn btn-warning" type="submit">Добавить тип страхования</button>
+</form>
+</html>

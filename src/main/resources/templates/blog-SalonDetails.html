@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ПРАКТИЧЕСКАЯ РАБОТА №3</title>
+</head>
+<body style="background: #5CDB95">
+
+<h1>Салоны:</h1>
+<div th:each="el : ${Salon}">
+    <h3><b> Автосалон - </b> <span th:text="${el.getNameSalon()}" /></h3>
+    <p><b>Адрес - </b> <span th:text="${el.getAdresSalon()}"/></p>
+    <p><b> ИНН - </b> <span th:text="${el.getInnSalon()}"/></p>
+    <p><b> Банковский счет - </b> <span th:text="${el.getNomBank()}"/></p>
+
+
+    <form  th:action="'/blog/Salon/' + ${el.id} + '/Edit'">
+        <button class="btn btn-warning" type="submit">Изменить</button>
+    </form>
+
+    <form th:action="'/blog/Salon/' + ${el.id} + '/Remove'" method="post">
+        <button class="btn btn-warning" type="submit" >Удалить</button>
+    </form>
+</div>
+</body>
+</html>

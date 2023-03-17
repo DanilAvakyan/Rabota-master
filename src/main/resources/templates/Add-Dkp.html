@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>ПРАКТИЧЕСКАЯ РАБОТА №3</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <div th:insert="Blocks/Header"></div>
+</head>
+<body style="background: #5CDB95">
+<form th:action= "${'/Add/Dkp'}" method="post" th:object = "${dkp}">
+
+    <input type="date" th:field="*{dataSostav}" name="dataSostav" placeholder="Дата составления"> <br>
+    <div style="color: white" th:if="${#fields.hasErrors('dataSostav')}" th:errors="*{dataSostav}"></div>
+    <input type="text" name="SummaPokupki" th:field="*{SummaPokupki}" placeholder="Сумма"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('SummaPokupki')}" th:errors="*{SummaPokupki}"></div>
+
+
+
+    <select  name="surnameB">
+        <div th:each="element : ${buyers}">
+            <option th:text="${element.surnameB}"></option>
+        </div>
+    </select>
+
+    <select  name="nameSalon">
+        <div th:each="element : ${salons}">
+            <option th:text="${element.nameSalon}"></option>
+        </div>
+    </select>
+
+<!--    <select  name="carsmodel">-->
+<!--        <div th:each="element : ${cars1}">-->
+<!--            <option th:text="${element.carsmodel}"></option>-->
+<!--        </div>-->
+<!--    </select>-->
+
+    <select  name="surname">
+        <div th:each="element : ${managers}">
+            <option th:text="${element.surname}"></option>
+        </div>
+    </select>
+
+    <br>
+    <form>
+        <button type="submit" style="background: #379683"> Добавить ДКП</button>
+    </form>
+</form>
+<br>
+
+</body>
+</html>
+

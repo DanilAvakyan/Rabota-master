@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ПРАКТИЧЕСКАЯ РАБОТА №5</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body style="background: #5CDB95">
+<div th:insert="Blocks/Header"></div>
+<h1>Цвета</h1>
+
+<form  th:action="'/Add/Color'">
+    <button class="btn btn-warning" STYLE="background: #379683" type="submit">Добавить цвет</button>
+</form>
+
+<div th:each="el : ${Color}" metod="post">
+
+
+<!--    <p style="color: white"/><b>вид - </b> <span th:text="${el.getTypeСoating()}"/></p>-->
+    <p style="color: white"/><b>Цвет - </b> <span th:text="${el.getColourrr()}"/></p>
+
+
+    <form  th:action="'/Color/' + ${el.id} + '/Edit'">
+        <button class="btn btn-warning" style="background: #379683" type="submit">Изменить</button>
+    </form>
+
+    <form th:action="'/Color/' + ${el.id} + '/Remove'" method="post">
+        <button class="btn btn-warning" style="background: #379683" type="submit">Удалить</button>
+    </form>
+</div>
+</body>
+</html>

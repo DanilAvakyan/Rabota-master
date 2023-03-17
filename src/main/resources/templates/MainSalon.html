@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ПРАКТИЧЕСКАЯ РАБОТА</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body style="background: #5CDB95">
+<div th:insert="Blocks/Header"></div>
+<h1>Автосалоны</h1>
+
+<form  th:action="'/Search/Salon'">
+    <button class="btn btn-warning" STYLE="background: #379683" type="submit">Поиск салона</button>
+</form>
+<form  th:action="'/Add/Salon'" method="post">
+    <button class="btn btn-warning" STYLE="background: #379683" type="submit">Добавить салон</button>
+</form>
+
+<div method="post" th:each="el : ${Salon}" th:action="${'/Add/Salon'}">
+
+    <h3 style="color: white"><b> Салон - </b> <span th:text="${el.getNameSalon()}" /></h3>
+
+
+    <form  th:action="'/blog/Salon/' + ${el.id}">
+        <button STYLE="background: #379683" class="btn btn-warning" type="submit">Подробнее</button>
+    </form>
+</div>
+<br>
+</body>
+</html>

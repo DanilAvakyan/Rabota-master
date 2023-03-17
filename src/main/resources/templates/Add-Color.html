@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>ПРАКТИЧЕСКАЯ РАБОТА</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+  <div th:insert="Blocks/Header"></div>
+</head>
+<body style="background: #5CDB95">
+<form th:object = "${color}" th:action="${'/Add/Color'}" method="post">
+
+  <input type="text" name="typeСoating" th:field="*{typeСoating}" placeholder="Вид покрытия"><br>
+  <div style="color: white" th:if="${#fields.hasErrors('typeСoating')}" th:errors="*{typeСoating}"></div>
+
+  <input type="text" name="colourrr" th:field="*{colourrr}" placeholder="Цвет"><br>
+  <div style="color: white" th:if="${#fields.hasErrors('colourrr')}" th:errors="*{colourrr}"></div>
+  <br>
+  <form>
+    <button type="submit" style="background: #379683">Добавить цвет</button>
+  </form>
+</form>
+</body>
+</html>

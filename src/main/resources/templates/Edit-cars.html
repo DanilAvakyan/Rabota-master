@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>ПРАКТИЧЕСКАЯ РАБОТА №3</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body style="background: #5CDB95">
+<h2>Редактирование данных автомобиля</h2>
+<div th:each="el : ${cars}" th:object = "${cars}">
+  <form  method="post">
+    <input type="text" th:field="*{carbrand}" name="carbrand" placeholder="Марка"> <br>
+    <div style="color: white" th:if="${#fields.hasErrors('carbrand')}" th:errors="*{carbrand}"></div>
+    <input type="text" name="carsmodel" th:field="*{carsmodel}" placeholder="Модель"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('carsmodel')}" th:errors="*{carsmodel}"></div>
+    <input type="text" name="year_release" th:field="*{year_release}" placeholder="Год выпуска"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('year_release')}" th:errors="*{year_release}"></div>
+    <input type="text" name="VIN" th:field="*{VIN}" placeholder="VIN"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('VIN')}" th:errors="*{VIN}"></div>
+
+
+    <select  name="horsepower">
+      <div th:each="element : ${engine}">
+        <option th:text="${element.horsepower}"></option>
+      </div>
+    </select>
+
+    <select  name="colourrr">
+      <div th:each="element : ${color}">
+        <option th:text="${element.colourrr}"></option>
+      </div>
+    </select>
+
+    <select  name="typeKpp">
+      <div th:each="element : ${kpps}">
+        <option th:text="${element.typeKpp}"></option>
+      </div>
+    </select>
+    <br>
+    <form>
+      <button type="submit" style="background: #379683"> Изменить данные автомобиля</button>
+    </form>
+  </form>
+</div>
+</body>
+</html>
